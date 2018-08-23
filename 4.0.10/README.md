@@ -28,6 +28,11 @@ make cli
 ```
 > Redis access port `:7000` `:7001` `:7002` `:7003`
 
+
+## Persistence
+
+Volume mount -> `./data` 
+
 ## docker build (developer)
 
 local build

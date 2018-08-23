@@ -10,4 +10,4 @@ Redis Cluster version of single container image
 
 ## Documenet
 
-- **[4.0.10](4.0.10/README.md)**
+- **[4.0.10](4.0.10)**

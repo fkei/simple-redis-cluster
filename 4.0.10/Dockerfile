@@ -23,6 +23,6 @@ COPY redis.conf /redis.conf
 
 WORKDIR /
 
-EXPOSE 7000 7001 7002 7003
+EXPOSE 7000 7001 7002 7003 7004 7005
 
 CMD ["/docker-entrypoint.sh"]

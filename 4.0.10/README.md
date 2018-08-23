@@ -26,12 +26,12 @@ make run
 ```
 make cli
 ```
-> Redis access port `:7000` `:7001` `:7002` `:7003`
+> Redis access port `:7000` `:7001` `:7002` `:7003` `:7004` `:7005`
 
 
 ## Persistence
 
-Volume mount -> `./data` 
+Volume mount -> `./data`
 
 ## docker build (developer)
 

@@ -19,7 +19,7 @@ __lock_file=${__lock_dir}/redis.lock
 __listen_file=${__tmp_dir}/redis-cluster.listen
 
 # Initialize configs
-for p in 7000 7001 7002 7003
+for p in 7000 7001 7002 7003 7004 7005
 do
   conf_path=${__conf_dir}/redis-${p}.conf
 
@@ -47,7 +47,7 @@ while [ ${__FLAG} -eq 0 ];
 do
   sleep 1
   rm -f ${__listen_file}
-  for p in 7000 7001 7002 7003
+  for p in 7000 7001 7002 7003 7004 7005
   do
     redis-cli -p ${p} ping >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -58,9 +58,9 @@ do
       echo -n "0" >> ${__listen_file}
     fi
   done
-  for p in 7000 7001 7002 7003
+  for p in 7000 7001 7002 7003 7004 7005
   do
-    if [ -f ${__listen_file} -a "x`cat ${__listen_file}`" = "x1111" ]; then
+    if [ -f ${__listen_file} -a "x`cat ${__listen_file}`" = "x111111" ]; then
       __FLAG=1
     fi
   done
@@ -73,7 +73,7 @@ echo "======================================================"
 echo "All redis server started up."
 echo ""
 echo -e "\tLocal Address\t${IPADDR}"
-echo -e "\tRedis ports\t:7000 :7001 :7002 :7003"
+echo -e "\tRedis ports\t:7000 :7001 :7002 :7003 :7004 :7005"
 echo -e "\n\tex. redis-cli -c -p 7000\n"
 echo "======================================================"
 echo ""
@@ -82,7 +82,7 @@ echo ""
 # Create Redis cluster
 if [ ! -f ${__lock_file} ]; then
   touch ${__lock_file}
-  echo "yes" | /redis-trib.rb create --replicas 1 ${IPADDR}:7000 ${IPADDR}:7001 ${IPADDR}:7002 ${IPADDR}:7003
+  echo "yes" | /redis-trib.rb create --replicas 1 ${IPADDR}:7000 ${IPADDR}:7001 ${IPADDR}:7002 ${IPADDR}:7003 ${IPADDR}:7004 ${IPADDR}:7005
 fi
 
 tail -f ${__log_dir}/*.log

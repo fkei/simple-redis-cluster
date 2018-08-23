@@ -22,6 +22,8 @@ run: ## docker run
 	 -p 7001:7001 \
 	 -p 7002:7002 \
 	 -p 7003:7003 \
+	 -p 7004:7004 \
+	 -p 7005:7005 \
 	 -v $$PWD/data:/docker \
 	 -it \
 	 fkei/$(__NAME):$(__VERSION)
@@ -39,3 +41,7 @@ cli-7002:
 	docker exec -it simple-redis-cluster redis-cli -c -p 7002
 cli-7003:
 	docker exec -it simple-redis-cluster redis-cli -c -p 7003
+cli-7004:
+	docker exec -it simple-redis-cluster redis-cli -c -p 7004
+cli-7005:
+	docker exec -it simple-redis-cluster redis-cli -c -p 7005

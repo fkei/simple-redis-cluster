@@ -25,3 +25,17 @@ run: ## docker run
 	 -v $$PWD/data:/docker \
 	 -it \
 	 fkei/$(__NAME):$(__VERSION)
+
+bash:
+	docker exec -it $(__NAME) bash
+
+cli: cli-7000
+
+cli-7000:
+	docker exec -it simple-redis-cluster redis-cli -c -p 7000
+cli-7001:
+	docker exec -it simple-redis-cluster redis-cli -c -p 7001
+cli-7002:
+	docker exec -it simple-redis-cluster redis-cli -c -p 7002
+cli-7003:
+	docker exec -it simple-redis-cluster redis-cli -c -p 7003

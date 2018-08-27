@@ -28,3 +28,6 @@ cli: cli-7000 ## redis-cli access
 
 cli-7000:
 	redis-cli -c -p 7000
+
+package: ## helm package (dist:../../docs)
+	helm package --destination ../../docs/ .

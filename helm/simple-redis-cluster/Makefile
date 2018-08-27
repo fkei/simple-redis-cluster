@@ -31,3 +31,6 @@ cli-7000:
 
 package: ## helm package (dist:../../docs)
 	helm package --destination ../../docs/ .
+
+index:
+	cd ../../ && helm repo index --url https://fkei.github.io/simple-redis-cluster docs

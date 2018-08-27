@@ -18,6 +18,8 @@ mkdir -p ${__tmp_dir}
 __lock_file=${__lock_dir}/redis.lock
 __listen_file=${__tmp_dir}/redis-cluster.listen
 
+IPADDR=`ip --oneline --family inet address show dev eth0 | cut -d' ' -f7 | cut -d'/' -f1`
+
 # Initialize configs
 for p in 7000 7001 7002 7003 7004 7005
 do
@@ -29,7 +31,10 @@ do
   cp /redis.conf ${conf_path}
   echo "
 port $p
-dir ${data_dir}" >> ${conf_path}
+dir ${data_dir}
+
+cluster-announce-ip 127.0.0.1
+" >> ${conf_path}
 
   echo "
 [program:redis-${p}]
@@ -66,7 +71,6 @@ do
   done
 done
 
-IPADDR=`ip --oneline --family inet address show dev eth0 | cut -d' ' -f7 | cut -d'/' -f1`
 
 echo ""
 echo "======================================================"
@@ -74,6 +78,8 @@ echo "All redis server started up."
 echo ""
 echo -e "\tLocal Address\t${IPADDR}"
 echo -e "\tRedis ports\t:7000 :7001 :7002 :7003 :7004 :7005"
+echo -e "\tRedis announce ip\t:127.0.0.1"
+echo -e "\tRedis announce ports\t:17000 :17001 :17002 :17003 :17004 :17005"
 echo -e "\n\tex. redis-cli -c -p 7000\n"
 echo "======================================================"
 echo ""

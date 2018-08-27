@@ -1,6 +1,6 @@
 1. How to access redis cluster server
 {{- range $name, $port := .Values.configure.ports }}
-  $ redis -c -h 127.0.0.1 -p {{ $port }}
+  $ redis-cli -c -h 127.0.0.1 -p {{ $port }}
 {{- end }}
 
 > tips: The announcement port is +10000

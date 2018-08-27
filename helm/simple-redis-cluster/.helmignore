@@ -1,0 +1,15 @@
+.git/
+.gitignore
+.bzr/
+.bzrignore
+.hg/
+.hgignore
+.svn/
+
+*.swp
+*.bak
+*.tmp
+*~
+*.log
+
+.DS_Store

@@ -1,0 +1,11 @@
+name: simple-redis-cluster
+version: 0.1.1
+appVersion: "4.0.10"
+description: Redis Cluster on single container
+keywords:
+  - redis-cluster
+  - keyvalue
+  - database
+home: https://github.com/fkei/simple-redis-cluster
+sources:
+- https://github.com/fkei/simple-redis-cluster

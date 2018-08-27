@@ -1,0 +1,44 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "simple-redis-cluster.fullname" . }}
+  labels:
+    app: {{ template "simple-redis-cluster.name" . }}
+    chart: {{ template "simple-redis-cluster.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- if .Values.labels }}
+{{ toYaml .Values.labels | indent 4 }}
+{{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "simple-redis-cluster.name" . }}
+      release: {{ .Release.Name }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ template "simple-redis-cluster.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        {{- range $name, $port := .Values.configure.ports }}
+        - name: {{ $name }}
+          containerPort: {{ $port }}
+          protocol: TCP
+        {{- end }}
+        {{- range $name, $port := .Values.configure.announce }}
+        - name: {{ $name }}
+          containerPort: {{ $port }}
+          protocol: TCP
+        {{- end }}

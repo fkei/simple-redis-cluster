@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "simple-redis-cluster.fullname" . }}
+  labels:
+    app: {{ template "simple-redis-cluster.name" . }}
+    chart: {{ template "simple-redis-cluster.chart" . }}
+    release: {{ .Release.Name }}
+{{- if .Values.service.labels }}
+{{ toYaml .Values.service.labels | indent 4 }}
+{{- end }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+  {{- range $name, $port := .Values.configure.ports }}
+  - port: {{ $port }}
+    protocol: TCP
+    targetPort: {{ $port }}
+    name: {{ $name }}
+  {{- end }}
+  {{- range $name, $port := .Values.configure.announce }}
+  - port: {{ $port }}
+    protocol: TCP
+    targetPort: {{ $port }}
+    name: {{ $name }}
+  {{- end }}
+
+
+  selector:
+    app: {{ template "simple-redis-cluster.name" . }}
+    release: {{ .Release.Name }}

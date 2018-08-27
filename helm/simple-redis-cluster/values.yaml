@@ -1,0 +1,29 @@
+image:
+  repository: fkei/simple-redis-cluster
+  tag: 4.0.10
+  pullPolicy: IfNotPresent
+  # pullPolicy: Always
+
+replicaCount: 1
+
+labels: {}
+
+service:
+  type: LoadBalancer
+  labels: {}
+
+configure:
+  ports:
+    access-0: 7000
+    access-1: 7001
+    access-2: 7002
+    access-3: 7003
+    access-4: 7004
+    access-5: 7005
+  announce:
+    announce-0: 17000
+    announce-1: 17001
+    announce-2: 17002
+    announce-3: 17003
+    announce-4: 17004
+    announce-5: 17005

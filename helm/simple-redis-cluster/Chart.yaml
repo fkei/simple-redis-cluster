@@ -1,5 +1,5 @@
 name: simple-redis-cluster
-version: 0.1.1
+version: 0.1.2
 appVersion: "4.0.10"
 description: Redis Cluster on single container
 keywords:

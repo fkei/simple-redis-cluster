@@ -9,7 +9,7 @@ replicaCount: 1
 labels: {}
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   labels: {}
 
 configure:

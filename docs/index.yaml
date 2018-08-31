@@ -2,7 +2,22 @@ apiVersion: v1
 entries:
   simple-redis-cluster:
   - appVersion: 4.0.10
-    created: 2018-08-27T18:10:02.784182756+09:00
+    created: 2018-08-31T12:44:52.456340842+09:00
+    description: Redis Cluster on single container
+    digest: 0ed8f5e892f5ef8b3e574c7de72b0ae1bb8904e13a851f982f0949f0e318fc28
+    home: https://github.com/fkei/simple-redis-cluster
+    keywords:
+    - redis-cluster
+    - keyvalue
+    - database
+    name: simple-redis-cluster
+    sources:
+    - https://github.com/fkei/simple-redis-cluster
+    urls:
+    - https://fkei.github.io/simple-redis-cluster/simple-redis-cluster-0.1.2.tgz
+    version: 0.1.2
+  - appVersion: 4.0.10
+    created: 2018-08-31T12:44:52.456029569+09:00
     description: Redis Cluster on single container
     digest: 808ad6e0dd9ca9a1418a6c00439eb98d54b069ed51df1a84a21151883e3b035e
     home: https://github.com/fkei/simple-redis-cluster
@@ -16,4 +31,4 @@ entries:
     urls:
     - https://fkei.github.io/simple-redis-cluster/simple-redis-cluster-0.1.1.tgz
     version: 0.1.1
-generated: 2018-08-27T18:10:02.783712172+09:00
+generated: 2018-08-31T12:44:52.454219609+09:00
